@@ -28,10 +28,10 @@ class jira::params {
       case $::operatingsystem {
         'Ubuntu': {
           $json_packages           = [ 'rubygem-json', 'ruby-json' ]
-          $service_file_location   = '/etc/init.d/jira'
-          $service_file_template   = 'jira/jira.initscript.erb'
-          $service_lockfile        = '/var/lock/jira'
-          $service_provider        = 'debian'
+          $service_file_location   = '/lib/systemd/system/jira.service'
+          $service_file_template   = 'jira/jira.service.erb'
+          $service_lockfile        = '/var/lock/subsys/jira'
+          $service_provider        = 'systemd'
         } default: {
           if versioncmp($::operatingsystemmajrelease, '8') >= 0 {
             $json_packages           = 'ruby-json'
