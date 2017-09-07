@@ -200,7 +200,7 @@ class jira (
     if ! has_key($ajp, 'port') {
       fail('You need to specify a valid port for the AJP connector.')
     } else {
-      validate_re($ajp['port'], '^\d+$')
+      validate_re("${ajp['port']}", '^\d+$')
     }
     if ! has_key($ajp, 'protocol') {
       fail('You need to specify a valid protocol for the AJP connector.')
